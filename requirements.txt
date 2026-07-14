@@ -1,0 +1,6 @@
+openai
+langchain
+datasets
+pytest
+pandas
+numpy
