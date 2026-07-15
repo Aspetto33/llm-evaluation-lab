@@ -1,12 +1,14 @@
-# AI Evaluation Learning
-
-Learning LLM Evaluation and Agent Evaluation.
-
-## Goals
-
-- Understand LLM evaluation methods
-- Build evaluation pipelines
-- Practice benchmark implementation
-
-## Progress
-
+[
+    {
+        "id": "MBIST_001",
+        "prompt": "请解释一下MBIST是什么"
+    },
+    {
+        "id": "SCAN_001",
+        "prompt": "请解释一下Scan测试的原理"
+    },
+    {
+        "id": "ATPG_001",
+        "prompt": "请解释ATPG在芯片测试中的作用"
+    }
+]
