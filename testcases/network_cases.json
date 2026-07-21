@@ -1,0 +1,13 @@
+[
+    {
+        "id":"NET_TC_001",
+        "requirement":
+        "验证交换机接口shutdown和undo shutdown功能"
+    },
+
+    {
+        "id":"NET_TC_002",
+        "requirement":
+        "验证交换机BGP邻居状态是否正常"
+    }
+]

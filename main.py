@@ -6,6 +6,9 @@ import os
 import json
 import datetime
 
+from agent.agent import generate_test_script
+from evaluator.code_evaluator import evaluate_code
+from evaluator.execution_evaluator import execute_test_script
 
 load_dotenv()
 
@@ -62,11 +65,39 @@ def run_testcases(testcases):
         results.append(result)
     return results
 
+#run generate testcase
+def run_generate_testcases(testcases):
+    results = []
+    for testcase in testcases:
+        print(f"Running {testcase['id']}.......")
+        script = generate_test_script(testcase["requirement"])
+        evaluation = evaluate_code(script,testcase["requirement"])
+        execution = execute_test_script(script)
+        result = {
+            "testcase_id": testcase.get("id","unknown"),
+            "requirement": testcase.get("requirement","unknown"),
+            "generated_script": script,
+            "evaluation": evaluation,
+            "execution": execution
+        }
+        results.append(result)
+    return results
+
 
 
 if __name__ == "__main__":
-    testcases = load_testcases("./testcases/basic.json")
-    results = run_testcases(testcases)
+    testcases = load_testcases("./testcases/network_cases.json")
+    #results = run_testcases(testcases)
+    results = run_generate_testcases(testcases)
     for result in results:
-        print(f"report {result['testcase_id']} result")
-        print(result)
+        print("=" * 60)
+        print("Testcase:")
+        print(result["testcase_id"])
+        print("\nRequirement:")
+        print(result["requirement"])
+        print("\nGenerated Script:")
+        print(result["generated_script"])
+        print("\nEvaluation:")
+        print(result["evaluation"])
+        print("\nExecution:")
+        print(result["execution"])
